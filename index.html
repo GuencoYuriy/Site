@@ -28,24 +28,43 @@
 
 				<table id="tableone" class="table table-striped table-condensed table-one table-scroll">
 					
-
 					<script id="row-template" type="text/template">	
-						
-							<td id="picture" style="width: 7%; text-align: center; border-right-width: 0px;">
-								<i class="fa fa-phone" style="color: green; padding: 5px;"></i>
+							<td class="picture">
+								<i class="fa fa-<%=fa%>" style="color:<%=color%>;"></i>
 							</td>
-							<td id="name" style="width: 40%; border-left-width: 0px;">
+							<td class="name">
 								<span><%=name%></span>
 							</td>
-							<td id="time" style="width: 28%; padding-left: 10px; color: red;">
+							<td class="time" style="color:<%=time_color%>;">
 								<span><%=time%></span>
 							</td>
-							<td id="aux" style="width: 25%; padding-left: 10px; color: red;">
+							<td class="aux" style="color:<%=time_color%>;">
 								<span><%=aux%></span>
 							</td>
 					</script>
-
-
+					
+					<style>
+						#tableone .picture {
+							width: 7%;
+							text-align: center;
+							border-right-width: 0px;
+						}
+						#tableone .picture i {
+							padding: 5px;
+						}
+						#tableone .name {
+							width: 40%;
+							border-left-width: 0px;
+						}
+						#tableone .time {
+							width: 28%;
+							padding-left:10px;
+						}
+						#tableone .aux {
+							width: 25%;
+							padding-left: 10px;
+						}
+					</style>
 
 				</table>
 			</div>

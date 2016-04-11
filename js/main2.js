@@ -104,7 +104,7 @@ var AllPersonView = Backbone.View.extend ({
 	},
 
 	render: function(){
-		console.log(this.model.models);
+		// console.log(this.model.models);
 		this.model.each(function(person){
 		 	var personView = new PersonView ( {model: person} );
 		 	this.$el.append(personView.render().el);
