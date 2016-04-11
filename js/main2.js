@@ -58,9 +58,12 @@ var AllPersonView = Backbone.View.extend ({
 
 
 	 	this.model.fetch({
-			success: function (collection, response) {
-		    	console.log(collection.toJSON());
-		  	}
+	 		reset: true
+
+
+			// success: function (collection, response) {
+		 //    	console.log(collection.toJSON());
+		 //  	}
 		});
 
 
@@ -102,10 +105,10 @@ var AllPersonView = Backbone.View.extend ({
 
 	render: function(){
 		console.log(this.model.models);
-		// this.model.each(function(person){
-		//  	var personView = new PersonView ( {model: person} );
-		//  	this.$el.append(personView.render().el);
-		// }, this);
+		this.model.each(function(person){
+		 	var personView = new PersonView ( {model: person} );
+		 	this.$el.append(personView.render().el);
+		}, this);
 
 		return this;
 	}
@@ -115,4 +118,4 @@ var AllPersonView = Backbone.View.extend ({
 var collection = new AllPersonCollection();
 var allPersonView = new AllPersonView ({model: collection});
 
-// $('#tableone').append(allPersonView.render().el);
+$('#tableone').append(allPersonView.render().el);
