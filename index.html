@@ -30,20 +30,29 @@
 					
 					<script id="row-template" type="text/template">	
 							<td class="picture">
-								<i class="fa fa-<%=fa%>" style="color:<%=color%>;"></i>
+								<i class="fa fa-<%=fa%> <%=color%>"></i>
 							</td>
 							<td class="name">
 								<span><%=name%></span>
 							</td>
-							<td class="time" style="color:<%=time_color%>;">
+							<td class="time <%=time_color%>">
 								<span><%=time%></span>
 							</td>
-							<td class="aux" style="color:<%=time_color%>;">
+							<td class="aux <%=time_color%>">
 								<span><%=aux%></span>
 							</td>
 					</script>
 					
 					<style>
+						#tableone .red{
+							color: red;
+						}
+						#tableone .gold{
+							color: goldenrod;
+						}
+						#tableone .green{
+							color: green;
+						}
 						#tableone .picture {
 							width: 7%;
 							text-align: center;
