@@ -13,8 +13,11 @@ var Person = Backbone.Model.extend ({
 });
 
 var PersonView = Backbone.View.extend ({
-	initialize: function() {
-		this.render();
+	
+
+	initialize: function () {  
+        // this.model.on('change', this.render, this);
+        this.render();
 	},
 
 	tagName: 'tr',
@@ -53,58 +56,14 @@ var AllPersonView = Backbone.View.extend ({
 
 	initialize: function() {
 		this.model.bind('reset', this.render, this);
-		
-		// this.collection.fetch();
-
 
 	 	this.model.fetch({
 	 		reset: true
-
-
-			// success: function (collection, response) {
-		 //    	console.log(collection.toJSON());
-		 //  	}
 		});
-
-
-
-		// this.collection = new AllPersonCollection([
-		// 	{
-		// 		id: 1,
-		// 		name: 'Andrey',
-		// 		time: 100,
-		// 		aux: '20'
-		// 	},
-		// 	{
-		// 		id: 2,
-		// 		name: 'Yura',
-		// 		time: 200,
-		// 		aux: '40'
-		// 	},
-		// 	{
-		// 		id: 3,
-		// 		name: 'Sergey',
-		// 		time: 300,
-		// 		aux: '60'
-		// 	},
-		// 	{
-		// 		id: 4,
-		// 		name: 'Alla',
-		// 		time: 400,
-		// 		aux: '80'
-		// 	},
-		// 	{
-		// 		id: 5,
-		// 		name: 'Petro',
-		// 		time: 500,
-		// 		aux: 'temp'
-		// 	}
-
-		// ]);	
 	},
 
 	render: function(){
-		// console.log(this.model.models);
+		this.$el.empty();
 		this.model.each(function(person){
 		 	var personView = new PersonView ( {model: person} );
 		 	this.$el.append(personView.render().el);
@@ -117,5 +76,9 @@ var AllPersonView = Backbone.View.extend ({
 
 var collection = new AllPersonCollection();
 var allPersonView = new AllPersonView ({model: collection});
+
+setInterval(function(){
+    collection.fetch({reset: true});
+}, 5000);
 
 $('#tableone').append(allPersonView.render().el);
