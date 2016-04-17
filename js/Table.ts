@@ -38,23 +38,14 @@ class Person extends Backbone.Model{
 class PersonView extends Backbone.View<Person> {
     options: any;
     static template:any
-    constructor (options: any) {
-        super(options);
-       // this.model.bind('add',()=>this.add());
-       // this.render();
-       // console.log(options.tpl);
+    constructor (options: any) {  super(options); }
 
-    }
     add(){
         console.log('add');
 
     }
 
-    // initialize() {
-    //     this.render();
-    // }
-
-    render (): any {
+    render (): PersonView {
         this.$el.html(PersonView.template(this.model.toJSON()) );
         return this;
     }
@@ -75,58 +66,37 @@ class PersonView extends Backbone.View<Person> {
 //     model: this;
 // }
 
+
 class AllPersonCollection extends Backbone.Collection<Person> {
-   // model = Person;
+
     constructor (options: any) {
         super(options);
-        for (var str in options) {
-            this [str] = options [str];
-        }
-
-        // this.model = Person;
-        // this.url = 'http://front-desk.ca/mi/callcenter/dashboard2/getagents?date=2016-03-15T7:58:34';
+        for (var str in options) this[str] = options [str];
     }
+
     parse(response):any {
         console.log(response);
         return response.result.list;
     }
-    // model: Person,
-    // url: 'http://front-desk.ca/mi/callcenter/dashboard2/getagents?date=2016-03-15T7:58:34',
-    // parse: function(response) {
-    //     // console.log(response);
-    //     return response.result.list;
-    // },
-    //
-    // initialize: function() {
-    //     // console.log(this.url);
-    // }
-
 }
 
 class AppModel extends Backbone.Model{
-   // each(fn:any, bol:any):any{};
+
 
 }
 
 class AllPersonView extends Backbone.View<AppModel> {
-
     constructor (options: any){
         super(options);
-        for (var str in options) {
-            this [str] = options [str];
-        }
-        PersonView.template =  _.template( $('#row-template').html() );
-       // this.setElement($("#tableone"), true);
 
-       // this.tagName = 'tbody';
-        //this.className = 'body-scroll';
-        //this.id = 'mainbody';
+        PersonView.template =  _.template( $('#row-template').html() );
         this.collection.bind("add", this.ModelAdded,this);
      /* this.listenTo(options.collection,'add',function (ddd) {
          console.log(ddd)
       })*/
 
     }
+
     ModelAdded(person): any{
         console.log(person);
         var row: PersonView = new PersonView({
@@ -136,7 +106,6 @@ class AllPersonView extends Backbone.View<AppModel> {
         this.$el.append(row.render().el);
         return this;
     }
-
 
     render (): any {
         console.log(this.model);
@@ -149,52 +118,28 @@ class AllPersonView extends Backbone.View<AppModel> {
     }
 }
 
-// var person = new Person();
 
 
-
-// var options = new TableViewOptions();
-// var personView = new PersonView ( options );
-
-    var opt: any = {
+    var opt1: any = {
         model: Person,
         url: 'http://front-desk.ca/mi/callcenter/dashboard2/getagents?date=2016-03-15T7:58:34'
     };
 
 
-    var allPersonCollection = new AllPersonCollection (opt);
+    var allPersonCollection = new AllPersonCollection (opt1);
 
 
-var allPersonView = new AllPersonView({
+var opt2 ={
     collection: allPersonCollection,
     tagName:'tbody',
     className:'body-scroll',
     id:'mytable'
-});
+}
+
+var allPersonView = new AllPersonView(opt2);
 
 $('#tableone').append(allPersonView.el);
     allPersonCollection.fetch();
-
-
-
-
-
-
-
-
-//     tagName: 'tr',
-//     className: 'myline',
-//     id: function() {
-//         return this.model.get('id');
-//     },
-//
-//     template:  template('row-template'),
-//
-//     render: function() {
-//         this.$el.html( this.template(this.model.toJSON()) );
-//         return this;
-//     }
-// });
 
 
 
