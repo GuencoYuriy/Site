@@ -49,11 +49,7 @@ var AllPersonCollection = Backbone.Collection.extend ({
 });
 
 var AllPersonView = Backbone.View.extend ({
-	tagName: 'tbody',
-	className: 'body-scroll',
-	id: 'mainbody',
-
-
+	
 	initialize: function() {
 		this.model.bind('reset', this.render, this);
 
@@ -74,8 +70,10 @@ var AllPersonView = Backbone.View.extend ({
 });
 
 
-var collection = new AllPersonCollection();
-var allPersonView = new AllPersonView ({model: collection});
+var collection = new AllPersonCollection({});
+var allPersonView = new AllPersonView ({model: collection, tagName: 'tbody',
+	className: 'body-scroll',
+	id: 'mainbody'});
 
 setInterval(function(){
     collection.fetch({reset: true});
