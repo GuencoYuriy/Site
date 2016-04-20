@@ -20,6 +20,11 @@ var Table;
                 this[str] = options[str];
         }
         AllPersonCollection.prototype.parse = function (response) {
+            console.log(response.total);
+            var stamp = response.stamp.replace(' ', 'T');
+            console.log(this.url);
+            this.url = 'http://callcenter.front-desk.ca/service/getagents?date=' + stamp;
+            console.log(this.url);
             return response.result.list;
         };
         return AllPersonCollection;
@@ -31,22 +36,17 @@ var Table;
             _super.call(this, options);
             this.options = options;
             this.collection.bind("add", this.ModelAdded, this);
-            this.collection.fetch();
         }
         AllPersonView.prototype.ModelAdded = function (person) {
             var rowOpt = this.options.optionsRow;
-            rowOpt.model = person;
+            rowOpt.model = _.clone(person); //TODO Надо развязать
+            rowOpt.id = rowOpt.model.get('id');
+            // console.log(rowOpt.id);
             var row = new Table.PersonView(rowOpt);
             this.$el.append(row.render().el);
-            return this;
-        };
-        AllPersonView.prototype.render = function () {
-            // console.log(this.model);
-            this.$el.empty();
-            // this.collection.each(function(person){
-            //     var personView = new PersonView ( {model: person} );
-            //     this.$el.append(personView.render().el);
-            // }, this);
+            $("#" + row.model.get('id') + " .picture i").addClass("animated rubberBand").one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function () {
+                $("#" + row.model.get('id') + " .picture i").removeClass("animated rubberBand");
+            });
             return this;
         };
         return AllPersonView;
@@ -67,10 +67,15 @@ $(document).ready(function () {
         optionsRow: {
             model: null,
             tagName: 'tr',
-            className: 'myline'
+            className: 'myline',
+            id: null
         }
     };
     var allPersonView = new Table.AllPersonView(options);
+    options.collection.fetch();
+    setInterval(function () {
+        options.collection.fetch();
+    }, 10000);
     $('#tableone').append(allPersonView.el);
 });
 //# sourceMappingURL=Table2.js.map

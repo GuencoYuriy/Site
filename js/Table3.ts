@@ -76,6 +76,7 @@ class AllPersonCollection extends Backbone.Collection<Person> {
 
     parse(response):any {
         console.log(response);
+        
         return response.result.list;
     }
 }
