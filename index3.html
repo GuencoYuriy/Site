@@ -5,10 +5,14 @@
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<title></title>
 		
-		<link href="css/bootstrap.min.css" rel="stylesheet">
+		<link href="libs/bootstrap.min.css" rel="stylesheet">
 		<link rel="stylesheet" href="libs/font-awesome-4.5.0/css/font-awesome.min.css">
 		<link href="css/mystyle.css" rel="stylesheet">
-		<script type="text/javascript" src="libs/jquery-1.12.2.js"></script>
+		<link rel="stylesheet" href="libs/animate.min.css">
+		<script src="libs/jquery-2.1.4.min.js"></script>
+		<script src="libs/underscore-min.js"></script>
+		<script  src="libs/backbone-min.js"></script>
+		<script src="libs/moment.min.js"></script>
 		
 		
 	</head>
@@ -16,24 +20,76 @@
 	<body>
 		<div>
 			<div class="col-xs-8" style="height:91vh; background:white; padding:0px;">
-				<div class="div-one" style="width:47%; padding-left:20px;">
-					<p class="paragraf-one">AGENT NAME</p>
+				<div id="Table1">
+					<div class="div-one" style="width:47%; padding-left:20px;">
+						<p class="paragraf-one">AGENT NAME</p>
+					</div>
+					<div class="div-one" style="width:28%;">
+						<p class="paragraf-one">ELAPSED TIME</p>
+					</div>
+					<div class="div-one" style="width:25%;">
+						<p class="paragraf-one">AUX</p>
+					</div>
+
+
+							<!--Template Row start -->
+							<script id="row-template" type="text/template" data-id="template">
+								<td class="col0 rel">
+									<div class="icon rel" >
+										<div class="<%=icon%>"  data-id="icon"></div>
+									</div>
+								</td>
+								<td class="col1">
+									<span data-id="name"><%=name%></span>
+								</td>
+								<td  class="col2">
+									<span data-id="time,time_color" class="<%=time_color%>"><%=time%></span>
+								</td>
+								<td class="col3">
+									<div class="aux rel">
+										<div data-id="aux,aux_color" ><%=aux%></div>
+									</div>
+								</td>
+
+							</script>
+							<!--Template Row end -->
+
+
+					<script id="row-template2" type="text/template">
+						<td class="picture">
+							<i id="fa" class="fa fa-<%=fa%> <%=color%>"></i>
+						</td>
+						<td class="name">
+							<span><%=name%></span>
+						</td>
+						<td class="time <%=time_color%>">
+							<span><%=time%></span>
+						</td>
+						<td class="aux <%=time_color%>">
+							<span><%=aux%></span>
+						</td>
+					</script>
+
+							<table id="tableone" class="table table-striped table-condensed table-one">
+								<tbody>
+
+								</tbody>
+
+
+							</table>
+
+					<link href="css/Table2.css" rel="stylesheet">
+					<script src="js/com/BounceOutRow.js"></script>
+					<script src="js/apps/Table2.js"></script>
+
+
+					<link href="css/Table1.css" rel="stylesheet">
+					<script  src="js/com/RowModel.js"></script>
+					<!--<script  src="js/RowViewNested.js"></script>-->
+					<script  src="js/com/BackboneTable.js"></script>
+					<script  src="js/apps/Table1.js"></script>
+
 				</div>
-				<div class="div-one" style="width:28%;">
-					<p class="paragraf-one">ELAPSED TIME</p> 
-				</div>
-				<div class="div-one" style="width:25%;">
-					<p class="paragraf-one">AUX</p>
-				</div>
-
-				<table id="tableone" class="table table-striped table-condensed table-one table-scroll">
-					<tbody id="mainbody" class="body-scroll"></tbody>
-
-					
-
-
-
-				</table>
 			</div>
 
 			<div class="col-xs-4" style="height:40vh; background:black; padding:0px;">
@@ -131,19 +187,45 @@
 			</div>
 
 			<div class="col-xs-12 div-two">
-				<div id="roller" class="div-foor" style="text-align:center">
-					<nobr class="paragraf-two"><span>&nbsp;</span></nobr>
-				</div>
+				<!--<div id="roller" class="div-foor" style="text-align:center">-->
+					<!--<nobr class="paragraf-two"><span>&nbsp;</span></nobr>-->
+				<!--</div>-->
+
+
+					<div id="MovingText">
+
+					</div>
+				<style>
+
+				#MovingText>div{
+					white-space: nowrap;
+
+				}
+				#MovingText{
+					color: white;
+					margin-top: 2vh;
+					font-size: 4vh;
+					overflow: hidden;
+				}
+				#MovingText>div>p{
+					display: inline-block;
+				}
+
+
+			</style>
+					<script  src="js/com/MovingTextRow.js"></script>
+
 			</div>
 			
 			
 		</div>
 
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-		<script src="libs/bootstrap.min.js"></script>
-		<script src="libs/underscore.js"></script>
-		<script src="libs/backbone.js"></script>
-		<script src="libs/main.js"></script>
+
+
+		<!--<script src="js/main2.js"></script>-->
+
+
+		
 
 	</body>
 </html>

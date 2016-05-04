@@ -1,10 +1,10 @@
 /**
  * Created by yrik6 on 17.04.2016.
  */
-///<reference path="../typings/jquery.d.ts"/>
-///<reference path="../typings/underscore.d.ts"/>
-///<reference path="../typings/backbone-global.d.ts"/>
-///<reference path="Row.ts"/>
+///<reference path="../../typings/jquery.d.ts"/>
+///<reference path="../../typings/underscore.d.ts"/>
+///<reference path="../../typings/backbone-global.d.ts"/>
+///<reference path="../com/BounceOutRow.ts"/>
 var __extends = (this && this.__extends) || function (d, b) {
     for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
     function __() { this.constructor = d; }

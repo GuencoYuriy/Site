@@ -1,0 +1,29 @@
+#tableone .red{
+    color: red;
+}
+#tableone .gold{
+    color: goldenrod;
+}
+#tableone .green{
+    color: green;
+}
+#tableone .picture {
+    width: 7%;
+    text-align: center;
+    border-right-width: 0px;
+}
+#tableone .picture i {
+    padding: 5px;
+}
+#tableone .name {
+    width: 40%;
+    border-left-width: 0px;
+}
+#tableone .time {
+    width: 28%;
+    padding-left:10px;
+}
+#tableone .aux {
+    width: 25%;
+    padding-left: 10px;
+}

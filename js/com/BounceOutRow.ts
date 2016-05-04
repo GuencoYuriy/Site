@@ -1,9 +1,9 @@
 /**
  * Created by yrik6 on 18.04.2016.
  */
-///<reference path="../typings/jquery.d.ts"/>
-///<reference path="../typings/underscore.d.ts"/>
-///<reference path="../typings/backbone-global.d.ts"/>
+///<reference path="../../typings/jquery.d.ts"/>
+///<reference path="../../typings/underscore.d.ts"/>
+///<reference path="../../typings/backbone-global.d.ts"/>
     
 module Table {
     interface People {
@@ -33,13 +33,13 @@ module Table {
     }
 
     export class PersonView extends Backbone.View<Person> {
-        template:any = _.template( $('#row-template').html() );
+        static template:any = _.template( $('#row-template2').html() );
         $icon: JQuery;
         $name: JQuery;
         constructor (options: any) {
             super(options);
         }
-
+    
         initialize(): any {
             this.id = this.model.get('id');
             // console.log(this.id);
@@ -47,22 +47,22 @@ module Table {
             // this.model.on('change', this.render, this);
             this.model.on('remove', this.remove, this);
         }
-        
+    
         remove (): PersonView  {
             this.$el.remove();
             return this;
         }
-        
+    
         render (): PersonView {
             if (!this.$icon) {
-                this.$el.html( this.template(this.model.toJSON()) );
+                this.$el.html( PersonView.template(this.model.toJSON()) );
                 this.$icon = this.$el.find(".picture i");
                 this.$name = this.$el.find(".name");
             }
             // this.$el.html( this.template(this.model.toJSON()) );
             return this;
         }
-
+    
         icon (): PersonView {
             var id = this.$icon;
             // var id = this.model.get('id');
@@ -77,19 +77,6 @@ module Table {
                     );
                 }
             );
-            // $("#" + id + " .picture i").removeClass().addClass("fa fa-" + fa).css({"color":color});
-            // $("#" + id + " .picture i").addClass("animated bounceIn").one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend',
-            //     function () {
-            //         $("#" + id + " .picture i").removeClass("animated bounceIn");
-            //     }
-            // );
-
-            // id.removeClass().addClass("fa fa-" + fa).css({"color":color});
-            // id.addClass("animated rubberBand").one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend',
-            //     function () {
-            //         id.removeClass("animated rubberBand");
-            //     }
-            // );
             return this;
         }
     }

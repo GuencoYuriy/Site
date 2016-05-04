@@ -1,10 +1,10 @@
 /**
  * Created by yrik6 on 17.04.2016.
  */
-///<reference path="../typings/jquery.d.ts"/>
-///<reference path="../typings/underscore.d.ts"/>
-///<reference path="../typings/backbone-global.d.ts"/>
-///<reference path="Row.ts"/>
+///<reference path="../../typings/jquery.d.ts"/>
+///<reference path="../../typings/underscore.d.ts"/>
+///<reference path="../../typings/backbone-global.d.ts"/>
+///<reference path="../com/BounceOutRow.ts"/>
 
 module Table {
     export class AllPersonCollection extends Backbone.Collection<Person> {
