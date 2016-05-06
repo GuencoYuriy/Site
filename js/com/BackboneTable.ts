@@ -3,8 +3,8 @@
 
 module tables {
    import AgentModel = table.AgentModel;
-    // import RowView = tables.RowViewNested;
-    import RowView = Table.PersonView;
+    import RowView = tables.RowViewNested;
+    // import RowView = Table.PersonView;
 
     // import RowView = tables.RowViewSimple;
     
@@ -51,7 +51,7 @@ module tables {
             super(options);
             this.container = $(options.container);
             this.setElement(this.container.find('tbody').first(), true);
-            // RowView.template = _.template($(options.rowTempalete).html());
+            RowView.template = _.template($(options.rowTempalete).html());
             // collection.bind('reset', this.render);
             this.collection = options.collection;
             this.collection.bind('remove', (evt)=> {

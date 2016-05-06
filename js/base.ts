@@ -9,7 +9,8 @@
 ///<reference path="com/RowViewNested.ts"/>
 ///<reference path="com/RowModel.ts"/>
 ///<reference path="com/BounceOutRow.ts"/>
-
+///<reference path="com/AutoScroller.ts"/>
+///<reference path="com/AnotherTables.ts"/>
 
 
 
