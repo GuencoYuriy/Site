@@ -28,7 +28,13 @@ module tables {
             var d:string = res.stamp;
             this.params.date = d.replace(' ', 'T');
             var stamp = Date.now();
+
+            // var i = 0;
+            // var ar = [];
+
             _.map(res.result.list, function (item:any) {
+                // if (i++ < 8) ar.push(item);
+
                 item.stamp = stamp;
                 item.icon = 'fa fa-' + item.fa;
             });
@@ -36,6 +42,8 @@ module tables {
             // console.log(res.result.list.length);
             //  console.log(res);
             return res.result.list
+            // console.log(ar);
+            // return ar;
         }
 
         //parse:(data)=>{ }

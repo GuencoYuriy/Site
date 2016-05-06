@@ -11,6 +11,9 @@
 ///<reference path="com/BounceOutRow.ts"/>
 ///<reference path="com/AutoScroller.ts"/>
 ///<reference path="com/AnotherTables.ts"/>
+///<reference path="com/Formatter.ts"/>
+
+
 
 
 

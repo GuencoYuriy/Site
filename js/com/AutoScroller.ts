@@ -27,6 +27,7 @@ module utils{
             this.$scrollContent = $(this.scrollContent).first();
             this.$list = $(this.list).first();
             this.init();
+
             setTimeout(()=>this.start(null),2000);
         }
 
@@ -39,16 +40,24 @@ module utils{
            var scroll:number =  this.$scrollWindow.scrollTop();
            if(scroll == this.actualScroll)this.onScrollEnd();
            this.actualScroll = scroll;
-           if(this.step==2){
-               this.step = 0;
-               this.currentScroll=0;
-               this.$list.append(this.$list.children().first());
-               this.$list.append(this.$list.children().first());
-               this.$scrollWindow.scrollTop(0);
+
+           if(this.$scrollWindow.height() < this.$scrollContent.height()) {
+               if (this.step == 2) {
+                   this.step = 0;
+                   this.currentScroll = 0;
+                   this.$list.append(this.$list.children().first());
+                   this.$list.append(this.$list.children().first());
+                   this.$scrollWindow.scrollTop(0);
+               }
            }
        }
        private nextStep():void{
-            var h:number = this.$list.children(this.step).height()
+           //TODO from one to lines broken
+           if(this.$scrollWindow.height() > this.$scrollContent.height()) {
+               // console.log("No scroll");
+               return;
+           }
+           var h:number = this.$list.children(this.step).height();
            this.step++;
             this.currentScroll+=h;
            this.$scrollWindow.animate({
@@ -66,6 +75,7 @@ module utils{
            this.speed = this.speed*1000;
            this.$scrollWindow.on('mouseover',(evt)=>this.stop(evt));
            this.$scrollWindow.on('mouseleave',(evt)=>this.start(evt));
+           this.setHeight();
        }
         start(evt:JQueryEventObject):void{
            // console.log('starting',this);

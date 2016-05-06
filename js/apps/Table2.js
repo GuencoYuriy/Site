@@ -39,7 +39,7 @@ var Table;
         }
         AllPersonView.prototype.ModelAdded = function (person) {
             var rowOpt = this.options.optionsRow;
-            rowOpt.model = _.clone(person); //TODO Надо развязать
+            rowOpt.model = _.clone(person);
             rowOpt.id = rowOpt.model.get('id');
             // console.log(rowOpt.id);
             var row = new Table.PersonView(rowOpt);

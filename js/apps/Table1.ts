@@ -19,13 +19,13 @@ $(document).ready(function(){
         container:'#Table1',
         rowTempalete:'#row-template',
         collection:collection,
-        scroll_window:'#Table1 .scroll-window'
+        // scroll_window:'#Table1 .scroll-window'
     });
 
     var scroller:utils.AutoScroller = new utils.AutoScroller({
         //scrollWindow:'#Table1 .scroll-window',
-        scrollWindow:'#Table1 .scroll-content',
-        scrollContent:'#Table1 scroll-content',
+        scrollWindow:'#Table1 .scroll-window',
+        scrollContent:'#Table1 .scroll-content',
         list:'#Table1 .scroll-window tbody',
         delay:2,
         speed:0.7
