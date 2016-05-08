@@ -133,23 +133,23 @@
 
 }
 #Table1 .fa{
-    transition: transform 0.5s;
-    transform:translateY(0);
+    transition: transform 0.5s; -webkit-transition: transform 0.5s;
+    transform:translateY(0); -webkit-transform:translateY(0);
 }
 
 #Table1 .trans{
-    transition: transform 0.5s;
-    transform:translateY(0);
+    transition: transform 0.5s; -webkit-transition: transform 0.5s;
+    transform:translateY(0); -webkit-transform:translateY(0);
 }
 #Table1 .in.trans{
-    transform:translateY(100%);
+    transform:translateY(100%); -webkit-transform:translateY(100%);
 }
 #Table1 .out.trans{
-    transform:translateY(-100%);
+    transform:translateY(-100%); -webkit-transform:translateY(-100%);
 }
 #Table1 .in{
-    transform:translateY(100%);
+    transform:translateY(100%); -webkit-transform:translateY(100%);
 }
 #Table1 .out{
-    transform:translateY(-100%);
+    transform:translateY(-100%); -webkit-transform:translateY(-100%);
 }
